@@ -1,6 +1,6 @@
-accueil:
+index:
     path: /
-    controller: App\Controller\ProStagesController::accueil
+    controller: App\Controller\ProStagesController::index
 
 entreprises:
     path: /entreprises/

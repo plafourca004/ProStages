@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProStagesController extends AbstractController
 {
-    public function accueil()
+    public function index()
     {
-        return new Response('<h1>Bienvenue sur la page d\'accueil de Prostages</h1>');
+        return $this->render('pro_stages/index.html.twig'); 
     }
 
     public function entreprises()
@@ -26,12 +26,5 @@ class ProStagesController extends AbstractController
     public function stages($id)
     {
         return new Response('<h1>Cette page affichera le descriptif du stage ayant pour identifiant '.$id.'</h1>');
-    }
-
-    public function index()
-    {
-        return $this->render('pro_stages/index.html.twig', [
-            'controller_name' => 'ProStagesController',
-        ]); 
     }
 }
