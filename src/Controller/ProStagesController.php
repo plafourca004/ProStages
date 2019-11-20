@@ -20,9 +20,11 @@ class ProStagesController extends AbstractController
 
     public function entreprises()
     {
-        return $this->render('pro_stages/entreprises.html.twig');}
+        return $this->render('pro_stages/entreprises.html.twig', ['ressource' => 21]);
+    }
 
     public function stages($id)
     {
-        return $this->render('pro_stages/stages.html.twig');}
+        return $this->render('pro_stages/stages.html.twig');
+    }
 }
