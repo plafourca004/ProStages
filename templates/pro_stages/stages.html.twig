@@ -1,2 +1,6 @@
-<h1>Page sur la  page de ressources</h1>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Page sur la  page de ressources {{id}}</h1>
 <p><a href="{{path('formations')}}">Ici</a></p>
+{% endblock %}
