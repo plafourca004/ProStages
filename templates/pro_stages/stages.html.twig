@@ -15,7 +15,7 @@
 <h5><span class="font-weight-bold">Formations demandées: </span></h5><br />
 <ul>
 {% for form in stage.formations %}
-    <li>{{ form.nom }}</li>
+    <li>{{ form.nom }} (<span class="font-italic">{{ form.acronyme }}</span>)</li>
 {% endfor %}
 </ul>
 

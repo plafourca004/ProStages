@@ -1,27 +1,31 @@
 {% extends 'base.html.twig' %}
 
+{% block body %}
+<br/><h3>Liste des stages par entreprise</h3>
+{% endblock %}
+
 {% block stages %}
 <div class="row">
     {% for stage in stages %}
         {% if stage.identreprise.id == id %}
-        <div class="col-md-4">
+        <div class="col-md-4 py-3">
                 <div class="card">
                     <h5 class="card-header">
                         {{ stage.titre }}
                     </h5>
                     <div class="card-body">
                         <p class="card-text">
-                            Stage proposé par <span class="font-weight-bold">{{ stage.identreprise.nom }}</span><br />
+                            Stage proposé par <span class="font-weight-bold"><a href="{{path('entreprise',{id:stage.identreprise.id})}}" class="text-decoration-none">{{ stage.identreprise.nom }}</a></span><br />
                             Formation(s) demandée(s) : 
                             <span class="font-weight-bold">
                                 {% for form in stage.formations %}
-                                        {{form.acronyme}},
+                                    <a href="{{path('formation',{id:form.id})}}" class="text-decoration-none">{{form.acronyme}}</a>,
                                 {% endfor %}
                             </span>
                         </p>
                     </div>
                     <div class="card-footer">
-                        <button type="button" class="btn btn-primary">Voir Plus</button>
+                        <a href="{{path('stages',{id:stage.id})}}"><button type="button" class="btn btn-primary">Voir Plus</button></a>
                     </div>
                 </div>
             </div>

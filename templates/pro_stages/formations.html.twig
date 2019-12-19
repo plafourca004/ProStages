@@ -3,13 +3,14 @@
 {% block homeForm %}active{% endblock %}
 
 {% block body %}
+<br/>
 <div class="mx-auto" style="width: 500px;">
     <h3>Liste des stages par formations</h3>
 </div>  
 {% endblock %}
 
 {% block stages %}
-<div class="row">
+<div class="row py-5">
     <div class="mx-auto" style="width: 500px;">
         <ul class="list-group list-group-flush">
            {% for form in formations %}
