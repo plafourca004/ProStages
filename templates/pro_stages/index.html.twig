@@ -1,8 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-                
+{% block homeAct %} active {% endblock %}
 
-
-
+{% block stages %}
+<div class="row">
+            {% for stage in stages %}
+            <div class="col-md-4 py-3">
+                    <div class="card">
+                        <h5 class="card-header">
+                            {{ stage.titre }}
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Stage proposé par <span class="font-weight-bold"><a href="{{path('entreprise',{id:stage.identreprise.id})}}" class="text-decoration-none">{{ stage.identreprise.nom }}</a></span><br />
+                                Formation(s) demandée(s) : 
+                                <span class="font-weight-bold">
+                                    {% for form in stage.formations %}
+                                         {{form.acronyme}},
+                                    {% endfor %}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{path('stages',{id:stage.id})}}"><button type="button" class="btn btn-primary">Voir Plus</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 {% endblock %}

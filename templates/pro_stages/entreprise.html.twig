@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stages %}
+<div class="row">
+    {% for stage in stages %}
+        {% if stage.identreprise.id == id %}
+        <div class="col-md-4">
+                <div class="card">
+                    <h5 class="card-header">
+                        {{ stage.titre }}
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Stage proposé par <span class="font-weight-bold">{{ stage.identreprise.nom }}</span><br />
+                            Formation(s) demandée(s) : 
+                            <span class="font-weight-bold">
+                                {% for form in stage.formations %}
+                                        {{form.acronyme}},
+                                {% endfor %}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary">Voir Plus</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

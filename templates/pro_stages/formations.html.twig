@@ -1,6 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block homeForm %}active{% endblock %}
+
 {% block body %}
-<h3>Liste des stages par formations</h3>
-<!-- {{path('stages',{id:5})}} -->
+<div class="mx-auto" style="width: 500px;">
+    <h3>Liste des stages par formations</h3>
+</div>  
+{% endblock %}
+
+{% block stages %}
+<div class="row">
+    <div class="mx-auto" style="width: 500px;">
+        <ul class="list-group list-group-flush">
+           {% for form in formations %}
+              <li class="list-group-item"><a href="{{path('formation',{id:form.id})}}">{{ form.nom }}</a></li>          
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

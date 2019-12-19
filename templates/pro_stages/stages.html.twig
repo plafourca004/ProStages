@@ -1,6 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Page sur la  page de ressources {{id}}</h1>
-<p><a href="{{path('formations')}}">Ici</a></p>
+<br />
+<h1 class="text-uppercase">{{ stage.titre }}</h1>
+<h4>    Par {{ stage.identreprise.nom }}</h4><br />
+<hr class="style1">
+{{ stage.descMission }}
+<hr class="style1">
+<h5><span class="font-weight-bold">Contact: </span></h5><br />
+<span class="font-weight-bold">Mail : </span>{{ stage.mail }}<br />
+<span class="font-weight-bold">Adresse : </span>{{ stage.identreprise.adresse }}<br />
+<span class="font-weight-bold">Site Web : </span>{{ stage.identreprise.lienSite }}<br />
+<hr class="style1">
+<h5><span class="font-weight-bold">Formations demandées: </span></h5><br />
+<ul>
+{% for form in stage.formations %}
+    <li>{{ form.nom }}</li>
+{% endfor %}
+</ul>
+
+
+
 {% endblock %}

@@ -44,10 +44,18 @@ class AppFixtures extends Fixture
         for ( $i = 0; $i < $nbEntreprises ; $i++ ) //Entreprise
         {
             $entreprise = new Entreprise();
-            $entreprise->setNom($faker->company);
             $entreprise->setActivite($faker->sentence($nbWords =20, $variableNbWords = true));
             $entreprise->setAdresse($faker->address);
-            $entreprise->setLienSite($faker->regexify('http\:\/\/'.$entreprise->getNom().'\.'.$faker->tld)); //Creation du lien (Je devrais enlever les espaces et les points)
+
+            $nomEntreprise = $faker->company;
+            $siteWeb = strtolower($nomEntreprise);
+            $siteWeb = str_replace(' ','', $siteWeb); //formalisation
+            $siteWeb = str_replace('.','', $siteWeb); //formalisation
+            
+            $entreprise->setNom($nomEntreprise);
+
+
+            $entreprise->setLienSite($faker->regexify('http\:\/\/www\.'.$siteWeb.'\.'.$faker->tld));
             
             array_push($tabEntreprises, $entreprise); // Ajout dans le tableau des entreprises
 
@@ -64,13 +72,12 @@ class AppFixtures extends Fixture
                 $stage->setMail($faker->companyEmail);
                 
                 $nb = $faker->numberBetween($min=0, $max=2);
-                $stage->addFormation($tabTypeFormation[$nb]);
+                $stage->addFormation($tabTypeFormation[$nb]);    //En mettre plusieurs en idée d'amélioration (facile a faire mais pas trop le temps)
                 $tabTypeFormation[$nb]->addStage($stage);
 
                 $manager->persist($stage);
                 $manager->persist($tabTypeFormation[$nb]);
 
-                // Cles secondaires
                 $stage->setIdEntreprise($entrep);
                 $entrep->addStage($stage);
                 
