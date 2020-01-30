@@ -8,54 +8,51 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Formation;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
+use App\Repository\StageRepository;
+use App\Repository\EntrepriseRepository;
+use App\Repository\FormationRepository;
 
 class ProStagesController extends AbstractController
 {
-    public function index()
+    public function index(StageRepository $repositeryStage)
     {
-        $repositeryStage = $this->getDoctrine()->getRepository(Stage::class);
-        $stages = $repositeryStage->findAll();
+        $stages = $repositeryStage->findStageEntreprise();
 
         return $this->render('pro_stages/index.html.twig', ['stages' => $stages]); 
     }
 
-    public function formations()
+    public function formations(FormationRepository $repositeryFormations)
     {
-        $repositeryFormations = $this->getDoctrine()->getRepository(Formation::class);
         $formations = $repositeryFormations->findAll();
 
         return $this->render('pro_stages/formations.html.twig', ['formations' => $formations]);   
     }
 
-    public function entreprises()
+    public function entreprises(EntrepriseRepository $repositeryEntreprise)
     {
-        $repositeryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
         $entreprises = $repositeryEntreprise->findAll();
 
         return $this->render('pro_stages/entreprises.html.twig', ['entreprises' => $entreprises]);
     }
 
-    public function stages($id)
+    public function stages(Stage $stage)
     {
-        $repositeryStages = $this->getDoctrine()->getRepository(Stage::class);
-        $stage = $repositeryStages->find($id);
-
         return $this->render('pro_stages/stages.html.twig', ['stage' => $stage]);
     }
 
-    public function entreprise($id)
+    public function entreprise(Entreprise $entreprise)
     {
         $repositeryStage = $this->getDoctrine()->getRepository(Stage::class);
-        $stages = $repositeryStage->findAll();
+        $stages = $repositeryStage->findByEntreprise($entreprise);
 
-        return $this->render('pro_stages/entreprise.html.twig', ['id' => $id , 'stages' => $stages]);
+        return $this->render('pro_stages/entreprise.html.twig', ['stages' => $stages, 'entreprise' => $entreprise]);
     }
 
-    public function formation($id)
+    public function formation(Formation $formation)
     {
         $repositeryStage = $this->getDoctrine()->getRepository(Stage::class);
-        $stages = $repositeryStage->findAll();
+        $stages = $repositeryStage->findByFormation($formation);
         
-        return $this->render('pro_stages/formation.html.twig', ['id' => $id , 'stages' => $stages]);
+        return $this->render('pro_stages/formation.html.twig', ['stages' => $stages, 'formation' => $formation]);
     }
 }

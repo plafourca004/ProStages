@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<br/><h3>Liste des stages par entreprise</h3>
+    <br/><h3>Liste des stages de l'entreprise <span class="font-weight-bold">{{ entreprise.nom }}</span></h3>        
 {% endblock %}
 
 {% block stages %}
 <div class="row">
     {% for stage in stages %}
-        {% if stage.identreprise.id == id %}
         <div class="col-md-4 py-3">
                 <div class="card">
                     <h5 class="card-header">
@@ -15,7 +14,6 @@
                     </h5>
                     <div class="card-body">
                         <p class="card-text">
-                            Stage proposé par <span class="font-weight-bold"><a href="{{path('entreprise',{id:stage.identreprise.id})}}" class="text-decoration-none">{{ stage.identreprise.nom }}</a></span><br />
                             Formation(s) demandée(s) : 
                             <span class="font-weight-bold">
                                 {% for form in stage.formations %}
@@ -29,7 +27,6 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
     {% endfor %}
 </div>
 {% endblock %}

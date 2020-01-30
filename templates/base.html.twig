@@ -11,7 +11,7 @@
         {% block stylesheets %}{% endblock %}
         <style>
             body {
-                background-image: url('https://webgradients.com/public/webgradients_png/089%20Premium%20White.png');
+                background-image: url('https://www.vox360.com/wp-content/uploads/2019/05/Website-Background-Web.jpg');
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
@@ -24,10 +24,10 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         
-        <div class="container-fluid">
+        <div class="container-fluid px-5">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="mx-auto" style="width: 200px;"><h2>
+                        <div class="mx-auto py-5" style="width: 200px;"><h2 class="display-4">
                             ProStages
                         </h2></div>
                         
@@ -69,19 +69,16 @@
 </div>
 </div>
         {% block footer %}
-
-        <div class="card text-right" style="width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title">Projet d'apprentissage de Symfony</h5>
-                <p class="card-text">Développé par Paul Lafourcade - TP4 / TD2</p>
+        <footer class="footer">
+            <div class="card text-right" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Projet d'apprentissage de Symfony</h5>
+                    <p class="card-text">Développé par Paul Lafourcade - TP4 / TD2</p>
+                </div>
             </div>
-        </div>
+        </footer>
         {% endblock %}
         
         {% block javascripts %}{% endblock %}
 </body>
 </html>
-        
-
-
-                

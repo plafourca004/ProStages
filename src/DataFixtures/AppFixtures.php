@@ -24,7 +24,7 @@ class AppFixtures extends Fixture
         $formationINFO->setAcronyme("DUT INFO");
         
         $formationLP = new Formation();
-        $formationLP->setNom("License Professionnel programmation avancée");
+        $formationLP->setNom("License Professionnelle programmation avancée");
         $formationLP->setAcronyme("LP Prog Avancée");
         
         $formationTIC = new Formation();
@@ -44,18 +44,19 @@ class AppFixtures extends Fixture
         for ( $i = 0; $i < $nbEntreprises ; $i++ ) //Entreprise
         {
             $entreprise = new Entreprise();
+            $entreprise->setNom($faker->company);
             $entreprise->setActivite($faker->sentence($nbWords =20, $variableNbWords = true));
             $entreprise->setAdresse($faker->address);
 
             $nomEntreprise = $faker->company;
             $siteWeb = strtolower($nomEntreprise);
-            $siteWeb = str_replace(' ','', $siteWeb); //formalisation
-            $siteWeb = str_replace('.','', $siteWeb); //formalisation
+            $siteWeb = str_replace(' ','_', $siteWeb);
+            $siteWeb = str_replace('.','', $siteWeb);
+            $siteWeb = str_replace(',','', $siteWeb);
             
-            $entreprise->setNom($nomEntreprise);
 
 
-            $entreprise->setLienSite($faker->regexify('http\:\/\/www\.'.$siteWeb.'\.'.$faker->tld));
+            $entreprise->setLienSite($faker->regexify('http\:\/\/'.$entreprise->getNom().'\.'.$faker->tld)); //Creation du lien (Je devrais enlever les espaces et les points)
             
             array_push($tabEntreprises, $entreprise); // Ajout dans le tableau des entreprises
 
