@@ -21,3 +21,11 @@ entreprise:
 formation:
     path: /formation/{id}
     controller: App\Controller\ProStagesController::formation
+
+ajouterEntreprise:
+    path: /ajouterEntreprise/
+    controller: App\Controller\ProStagesController::ajouterEntreprise
+
+modifierEntreprise:
+    path: /modifierEntreprise/{id}
+    controller: App\Controller\ProStagesController::modifierEntreprise

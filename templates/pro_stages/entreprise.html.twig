@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <br/><h3>Liste des stages de l'entreprise <span class="font-weight-bold">{{ entreprise.nom }}</span></h3>        
+    <br/><h3>Liste des stages de l'entreprise <span class="font-weight-bold">{{ entreprise.nom }}</span></h3>
+    <br /><p>{{ entreprise.activite }}</p><br /> 
 {% endblock %}
 
 {% block stages %}
+
+<a  href="{{path('modifierEntreprise',{id:entreprise.id})}}"><button type="button" class="btn btn-light">Modifier l'entreprise</button></a>
+
 <div class="row">
     {% for stage in stages %}
         <div class="col-md-4 py-3">
@@ -28,5 +32,6 @@
                 </div>
             </div>
     {% endfor %}
+
 </div>
 {% endblock %}
