@@ -76,7 +76,7 @@ class ProStagesController extends AbstractController
 
         $formulaireEntreprise->handleRequest($requetteHttp);
 
-        if($formulaireEntreprise->isSubmitted())
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
         {
             $manager->persist($entreprise);
             $manager->flush();
@@ -90,7 +90,6 @@ class ProStagesController extends AbstractController
     public function modifierEntreprise(Request $requetteHttp, ObjectManager $manager, Entreprise $entreprise)
     {
 
-
         $formulaireEntreprise = $this->createFormBuilder($entreprise)
             ->add('nom', TextType::class,['label' => 'Nom de l\'entreprise'])
             ->add('activite', TextareaType::class,['label' => 'Activité de l\'entreprise'])
@@ -100,7 +99,7 @@ class ProStagesController extends AbstractController
 
         $formulaireEntreprise->handleRequest($requetteHttp);
 
-        if($formulaireEntreprise->isSubmitted())
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
         {
             $manager->persist($entreprise);
             $manager->flush();
