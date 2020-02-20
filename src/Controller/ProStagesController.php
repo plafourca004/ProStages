@@ -12,6 +12,9 @@ use App\Repository\StageRepository;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 
+use App\Form\EntrepriseType;
+use App\Form\StageType;
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -67,12 +70,7 @@ class ProStagesController extends AbstractController
     {
         $entreprise = new Entreprise();
 
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-            ->add('nom', TextType::class,['label' => 'Nom de l\'entreprise'])
-            ->add('activite', TextareaType::class,['label' => 'Activité de l\'entreprise'])
-            ->add('adresse', TextareaType::class,['label' => 'Adresse de l\'entreprise'])
-            ->add('lienSite', UrlType::class,['label' => 'Lien du site internet'])
-            ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
         $formulaireEntreprise->handleRequest($requetteHttp);
 
@@ -89,13 +87,8 @@ class ProStagesController extends AbstractController
 
     public function modifierEntreprise(Request $requetteHttp, ObjectManager $manager, Entreprise $entreprise)
     {
-
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-            ->add('nom', TextType::class,['label' => 'Nom de l\'entreprise'])
-            ->add('activite', TextareaType::class,['label' => 'Activité de l\'entreprise'])
-            ->add('adresse', TextareaType::class,['label' => 'Adresse de l\'entreprise'])
-            ->add('lienSite', UrlType::class,['label' => 'Lien du site internet'])
-            ->getForm();
+        
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
         $formulaireEntreprise->handleRequest($requetteHttp);
 
@@ -108,5 +101,24 @@ class ProStagesController extends AbstractController
         }
 
         return $this->render('pro_stages/modifierEntreprise.html.twig', ['form' => $formulaireEntreprise->createView()]);
+    }
+
+    public function ajouterStage(Request $requetteHttp, ObjectManager $manager)
+    {
+        $stage = new Stage();
+
+        $formulaireStage = $this->createForm(StageType::class, $stage);
+
+        $formulaireStage->handleRequest($requetteHttp);
+
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid())
+        {
+            $manager->persist($stage);
+            $manager->flush();
+
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('pro_stages/ajouterStage.html.twig', ['form' => $formulaireStage->createView()]);
     }
 }

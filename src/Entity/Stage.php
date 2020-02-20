@@ -34,7 +34,7 @@ class Stage
     private $mail;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="stages")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="stages", cascade={"persist"})
      */
     private $idEntreprise;
 

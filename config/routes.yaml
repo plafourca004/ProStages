@@ -23,9 +23,13 @@ formation:
     controller: App\Controller\ProStagesController::formation
 
 ajouterEntreprise:
-    path: /ajouterEntreprise/
+    path: /ajouter/entreprise/
     controller: App\Controller\ProStagesController::ajouterEntreprise
 
 modifierEntreprise:
-    path: /modifierEntreprise/{id}
+    path: /modifier/entreprise/{id}
     controller: App\Controller\ProStagesController::modifierEntreprise
+
+ajouterStage:
+    path: /ajouter/stage/
+    controller: App\Controller\ProStagesController::ajouterStage

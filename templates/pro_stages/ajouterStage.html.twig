@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <br />
+    <h1>Ajouter un stage</h1>
+    {{ form_start(form) }}
+    <br />
+    <div class="form-group col-8">
+        {{ form_label(form.titre) }}
+        <br />
+        {{ form_widget(form.titre) }}
+    </div>
+    <div class="form-group col-8">
+        {{ form_label(form.descMission) }}
+        <br />
+        {{ form_widget(form.descMission) }}
+    </div>
+    <div class="form-group col-8">
+        {{ form_label(form.mail) }}
+        <br />
+        {{ form_widget(form.mail) }}
+    </div>
+
+    <div class="form-group col-8">
+        {{ form_label(form.idEntreprise.nom) }}
+        <br />
+        {{ form_widget(form.idEntreprise.nom) }}
+    </div>
+    <div class="form-group col-8">
+        {{ form_label(form.idEntreprise.activite) }}
+        <br />
+        {{ form_widget(form.idEntreprise.activite) }}
+    </div>
+    <div class="form-group col-8">
+        {{ form_label(form.idEntreprise.adresse) }}
+        <br />
+        {{ form_widget(form.idEntreprise.adresse) }}
+    </div>
+    <div class="form-group col-8">
+        {{ form_label(form.idEntreprise.lienSite) }}
+        <br />
+        {{ form_widget(form.idEntreprise.lienSite) }}
+    </div>
+    <div class="form-group col-8">
+        {{ form_label(form.formations) }}
+        <br />
+        {{ form_widget(form.formations) }}
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary btn-lg ml-5">Valider</button>
+    <br><br><br><br><br>
+    {{ form_end(form) }}
+
+{% endblock %}
