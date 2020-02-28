@@ -7,12 +7,40 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
 use App\Entity\Stage;
+use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
         
+        //CREATION D'UTILISATEURS DE TEST
+
+        $paul = new User();
+        $paul->setPrenom("Paul");
+        $paul->setNom("Lafourcade");
+        $paul->setUsername("Apolo");
+        $paul->setEmail("paulwoow@gmail.com");
+        $paul->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $paul->setPassword('$2y$10$lKpDyLexfIseqNX/q4xFber96zl2ryz2GLW9Xvo61QelE8sBqe9le');
+        $manager->persist($paul);
+        
+        $louison = new User();
+        $louison->setPrenom("Louison");
+        $louison->setNom("Vincent");
+        $louison->setUsername("Arkait53");
+        $louison->setEmail("louison@gmail.com");
+        $louison->setRoles(['ROLE_USER']);
+        $louison->setPassword('$2y$10$QftqffqqAvUgYn2Npt6AB.X6gAG8k2PQXaHB6DFyLhHqF4AEhanRG');
+        $manager->persist($louison);
+
+
+
+
+
+
+
+
         $nbEntreprises = 5;
         $nbStagesParEntreprises = 5;
 
@@ -45,7 +73,7 @@ class AppFixtures extends Fixture
         {
             $entreprise = new Entreprise();
             $entreprise->setNom($faker->company);
-            $entreprise->setActivite($faker->sentence($nbWords =20, $variableNbWords = true));
+            $entreprise->setActivite($faker->sentence($nbWords =10, $variableNbWords = true));
             $entreprise->setAdresse($faker->address);
 
             $nomEntreprise = $faker->company;
