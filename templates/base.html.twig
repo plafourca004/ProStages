@@ -30,20 +30,6 @@
                         <div class="mx-auto py-5" style="width: 200px;"><h2 class="display-4">
                             ProStages
                         </h2></div>
-                        
-                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                              <div class="carousel-item">
-                                  <p>Le bonheur n'est d'avoir tout ce que l'on désire mais d'apprécier que l'on a. - Dany Boon</p>
-                              </div>
-                              <div class="carousel-item">
-                                <p>Le bonheur, c'est de continuer à désirer ce que l'on possède. - Yves</p>
-                              </div>
-                              <div class="carousel-item">
-                                <p>Regardez profondément dans la nature, et alors vous comprendrez tout beaucoup mieux. - Benjamin</p>
-                              </div>
-                            </div>
-                          </div>
                                                                                                                                                                     <!-- Site créé par Paul Lafourcade dans le cadre du module de Symfony -->
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -56,6 +42,15 @@
                                     </li>
                                     <li class="nav-item {% block homeForm %}{% endblock %}">
                                          <a class="nav-link" href="{{path('formations')}}">Formations</a>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav ml-md-auto">
+                                    <li class="nav-item active">
+                                    {% if is_granted('ROLE_USER') %}
+                                        <a class="nav-link" href="{{path('app_logout')}}">{{ app.user.username }} - Deconnexion</a>
+                                    {% else %}
+                                    <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+                                    {% endif %}
                                     </li>
                                 </ul>
                                 
