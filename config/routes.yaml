@@ -19,7 +19,7 @@ entreprise:
     controller: App\Controller\ProStagesController::entreprise
 
 formation:
-    path: /formation/{id}
+    path: /stageParFormation/{id}
     controller: App\Controller\ProStagesController::formation
 
 ajouterEntreprise:

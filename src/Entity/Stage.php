@@ -126,4 +126,10 @@ class Stage
 
         return $this;
     }
+
+    public function __tostring()
+    {
+        return $this->getTitre();
+    }
+
 }

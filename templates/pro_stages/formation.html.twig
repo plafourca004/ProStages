@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block stages %}
+{% if is_granted('ROLE_ADMIN') %}
+    <a href="{{path('formation_index')}}"><button type="button" class="btn btn-primary">Administration</button></a>
+    <br><br>    
+{% endif %}
 <div class="row">
     {% for stage in stages %}
         <div class="col-md-4 py-3">

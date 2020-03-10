@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Formation{% endblock %}
+
+{% block body %}
+<br>
+<br>
+    <h1>Editer {{ formation.acronyme }}</h1>
+<br>
+    {{ include('formation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('formation_index') }}">Revenir à la liste</a>
+
+    {{ include('formation/_delete_form.html.twig') }}
+{% endblock %}
