@@ -156,4 +156,10 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function __tostring()
+    {
+        return $this->getUsername()." (".$this->getPrenom()." ".$this->getNom().")";
+    }
 }
+
